@@ -1,0 +1,71 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+directive @key(fields: String!) on OBJECT | INTERFACE
+
+directive @extends on OBJECT | INTERFACE
+
+directive @external on OBJECT | FIELD_DEFINITION
+
+directive @requires(fields: String!) on FIELD_DEFINITION
+
+directive @provides(fields: String!) on FIELD_DEFINITION
+
+type Vehicle {
+  id: Float!
+  first_name: String!
+  last_name: String!
+  email: String!
+  car_make: String!
+  car_model: String!
+  vin_number: String!
+  manufactured_date: String!
+  age_of_vehicle: String!
+}
+
+type VehicleDeletionResponse {
+  massage: String!
+  deletedVehicle: Vehicle!
+}
+
+type VehiclesResponse {
+  totalCount: Float!
+  filteredVehicles: [Vehicle!]!
+}
+
+type Query {
+  findSpecificVehicles(age: Int!): [Vehicle!]!
+  findAllVehiclesPagi(key_word: String!, limit: Int!, offset: Int!): VehiclesResponse!
+}
+
+type Mutation {
+  createVehicle(input: VehicleInput!): Vehicle!
+  createVehicles(input: [VehiclePackInput!]!): [Vehicle!]!
+  updateVehicle(updateVehicleInput: VehicleInput!): Vehicle!
+  removeVehicle(vehicleId: Int!): VehicleDeletionResponse!
+}
+
+input VehicleInput {
+  id: Float!
+  first_name: String!
+  last_name: String!
+  email: String!
+  car_make: String!
+  car_model: String!
+  vin_number: String!
+  manufactured_date: String!
+  age_of_vehicle: String!
+}
+
+input VehiclePackInput {
+  id: Float
+  first_name: String!
+  last_name: String!
+  email: String!
+  car_make: String!
+  car_model: String!
+  vin_number: String!
+  manufactured_date: String!
+  age_of_vehicle: String!
+}
